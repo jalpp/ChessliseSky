@@ -19,6 +19,7 @@ export const lambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGat
         const gifBase64 = await bot.fetchGifAsBase64(gifUrl);
         console.log('Fetched puzzle URL:', puzzleUrl);
         await bot.postPuzzle(puzzleUrl, gifBase64);
+        await bot.postChallengeURLs();
         console.log('ending...');
         return {
             statusCode: 200,

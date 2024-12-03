@@ -20,8 +20,7 @@ Parameters:
     Description: Password
     Default: 'enter password'  
 
-        
-
+      
 Resources:
   ChessLiseSkyFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
@@ -39,7 +38,7 @@ Resources:
         CWSchedule:
           Type: ScheduleV2
           Properties:
-            ScheduleExpression: 'cron(0 13 * * ? *)'
+            ScheduleExpression: 'cron(0 14 * * ? *)'
             Name: TestScheduleV2Function
             Description: Post lichess daily puzzle
     Metadata: # Manage esbuild properties

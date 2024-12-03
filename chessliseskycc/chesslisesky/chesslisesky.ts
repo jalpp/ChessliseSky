@@ -5,11 +5,13 @@ export class Chesslisesky {
     private agent: BskyAgent;
     private username: string;
     private password: string;
+    private side: string;
 
     constructor() {
         this.agent = new BskyAgent({ service: 'https://bsky.social' });
         this.username = process.env.BlueSkyUser || '';
         this.password = process.env.BlueSkyUserPassword || '';
+        this.side = '';
     }
 
     private convertDataURIToUint8Array(dataURI: string): Uint8Array {
@@ -30,10 +32,11 @@ export class Chesslisesky {
 
     public async fetchChessComPuzzle(): Promise<{ puzzleUrl: string; gifUrl: string; title: string }> {
         const response = await axios.get('https://api.chess.com/pub/puzzle');
-        const { image, url, title } = response.data;
+        const { image, url, title, fen } = response.data;
         console.log(response.data);
         const puzzleUrl = url;
         const gifUrl = image;
+        this.side = fen.includes('b') ? 'black' : 'white';
         return { puzzleUrl, gifUrl, title };
     }
 
@@ -46,8 +49,10 @@ export class Chesslisesky {
             });
 
             const rt = new RichText({
-                text: `🧩 Chess.com Daily Puzzle \n ${title} \nTry it here: ${puzzleUrl} \n #chess`,
+                text: `Chesscom Daily Puzzle 🧩 \n ${title} \n ${this.side} to move \n Try it here: ${puzzleUrl} \n #chess #chessfeed #puzzle`,
             });
+
+            await rt.detectFacets(this.agent);
 
             await this.agent.post({
                 text: rt.text,

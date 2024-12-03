@@ -38,7 +38,7 @@ Resources:
         CWSchedule:
           Type: ScheduleV2
           Properties:
-            ScheduleExpression: 'cron(0 14 * * ? *)'
+            ScheduleExpression: 'cron(0 15 * * ? *)'
             Name: TestScheduleV2Function2
             Description: Post Chess.com daily puzzle
     Metadata: # Manage esbuild properties
