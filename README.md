@@ -23,3 +23,9 @@ each lambda as sam readme you can follow
 # About ChessLise
 [Follow me on BlueSky](https://bsky.app/profile/chesslise.bsky.social)
 [My brother Chesslise on Discord](https://github.com/jalpp/Chesslise)
+
+# Preview
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/jalpp/ChessliseSky/2e2e086a7cad0892d8bfa4fd163dccbee294f454/chesslisesky/chesslisesky/preview/demo.png" alt="ChessLise" width=50% height=50% />
+</p>
